@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+matplotlib
+streamlit
+ydata_profiling
+streamlit-pandas-profiling
