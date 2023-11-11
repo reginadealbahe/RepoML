@@ -31,8 +31,8 @@ def train_model():
        df_target = pd.read_csv('train_target.csv')
        df_data_train = pd.merge(df_customers, df_target, on='ID', how='inner')
 
-       y = data_train.DEFAULT_JULY #target variable
-       X = data_train[features]
+       y = df_data_train.DEFAULT_JULY #target variable
+       X = df_data_train[features]
 
        from sklearn.datasets import fetch_covtype
        from sklearn.model_selection import RandomizedSearchCV
