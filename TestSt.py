@@ -54,11 +54,11 @@ def main():
                # Display the prediction
                st.write("Prediction:", prediction)
 
-           # Ask the user if they want to upload another CSV file
-            another_file = st.button("Upload Another CSV File")
+              # Ask the user if they want to upload another CSV file
+              another_file = st.button("Upload Another CSV File")
 
-            if not another_file:
-                break  # Exit the loop if the user doesn't want to upload another file
+              if not another_file:
+                     break  # Exit the loop if the user doesn't want to upload another file
  
 
 # Run the Streamlit app
