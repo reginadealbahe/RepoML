@@ -36,30 +36,30 @@ def main():
     st.write(default_data)
        
     while True:
-           # Upload a CSV file
-           st.write("Upload a CSV file for prediction.")
-           uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
+       # Upload a CSV file
+       st.write("Upload a CSV file for prediction.")
+       uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
        
-           if uploaded_file is not None:
-               # Read the uploaded CSV file into a Pandas DataFrame
-               input_data = pd.read_csv(uploaded_file)
-       
-               # Display the uploaded data
-               #st.write("Uploaded Data:")
-               #st.write(input_data)
-       
-               # Make predictions
-               prediction = make_prediction(input_data)
-       
-               # Display the prediction
-               st.write("Prediction:", prediction)
-
+       if uploaded_file is not None:
+              # Read the uploaded CSV file into a Pandas DataFrame
+              input_data = pd.read_csv(uploaded_file)
+              
+              # Display the uploaded data
+              #st.write("Uploaded Data:")
+              #st.write(input_data)
+              
+              # Make predictions
+              prediction = make_prediction(input_data)
+              
+              # Display the prediction
+              st.write("Prediction:", prediction)
+              
               # Ask the user if they want to upload another CSV file
               another_file = st.button("Upload Another CSV File")
-
+              
               if not another_file:
                      break  # Exit the loop if the user doesn't want to upload another file
- 
+        
 
 # Run the Streamlit app
 if __name__ == "__main__":
