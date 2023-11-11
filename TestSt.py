@@ -25,17 +25,17 @@ def make_prediction(input_data):
 
 # Streamlit app
 def main():
-    st.title("Prediction App")
-
-    # Read a default CSV file located in the same GitHub repository
-    default_file_path = 'train_customers.csv'  # Update with your actual file path
-    default_data = pd.read_csv(default_file_path)
-
-    # Display the default data
-    st.write("Default Data:")
-    st.write(default_data)
+       st.title("Prediction App")
        
-    while True:
+       # Read a default CSV file located in the same GitHub repository
+       default_file_path = 'train_customers.csv'  # Update with your actual file path
+       default_data = pd.read_csv(default_file_path)
+       
+       # Display the default data
+       #st.write("Default Data:")
+       #st.write(default_data)
+
+ 
        # Upload a CSV file
        st.write("Upload a CSV file for prediction.")
        uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
@@ -54,11 +54,7 @@ def main():
               # Display the prediction
               st.write("Prediction:", prediction)
               
-              # Ask the user if they want to upload another CSV file
-              another_file = st.button("Upload Another CSV File")
-              
-              if not another_file:
-                     break  # Exit the loop if the user doesn't want to upload another file
+          
         
 
 # Run the Streamlit app
