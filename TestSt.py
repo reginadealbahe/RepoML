@@ -8,7 +8,7 @@ features = ['EDUCATION', 'AGE','LIMIT_BAL','PAY_JUNE',
        'BILL_AMT_JUNE', 'BILL_AMT_MARCH', 'BILL_AMT_MAY']
 
 # Function to train model
-def train_model():
+#def train_model():
        
 
 
