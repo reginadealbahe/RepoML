@@ -82,6 +82,9 @@ def make_prediction(input_data):
 # Streamlit app
 def main():
        st.title("Prediction App")
+
+       pip install scikit-learn
+       
        train_model()
  
        # Upload a CSV file
