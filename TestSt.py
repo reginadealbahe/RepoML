@@ -1,4 +1,11 @@
-
+#from sklearn.datasets import fetch_covtype
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import mutual_info_classif, f_classif
+from sklearn.metrics import roc_auc_score, roc_curve, classification_report
+from sklearn.model_selection import train_test_split, GridSearchCV
+       
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -34,14 +41,7 @@ def train_model():
        y = df_data_train.DEFAULT_JULY #target variable
        X = df_data_train[features]
 
-       from sklearn.datasets import fetch_covtype
-       from sklearn.model_selection import RandomizedSearchCV
-       from sklearn.tree import DecisionTreeClassifier
-       from sklearn.ensemble import RandomForestClassifier
-       from sklearn.feature_selection import mutual_info_classif, f_classif
-       from sklearn.metrics import roc_auc_score, roc_curve, classification_report
-       from sklearn.model_selection import train_test_split, GridSearchCV
-       
+
        model = RandomForestClassifier(n_estimators=150) #number of decision trees, large data sets more trees
        
        # Define the hyperparameter grid to search
