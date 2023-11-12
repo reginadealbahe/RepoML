@@ -81,13 +81,18 @@ def train_model():
 
 # Function to make predictions
 def make_prediction(input_data):
-       # Add your data preprocessing steps if needed
-       # Example: input_data = preprocess_data(input_data)
+       st.wrute(best_model)
+       
        X_test = input_data[features]
        st.write(X_test.describe())
        
        # Get probability using the loaded model
-       probability = best_model.predict_proba(X_test)[:, 1]
+       try:
+              probability = best_model.predict_proba(X_test)[:, 1]
+       except AttributeError as e:
+              print(f"Error: {e}")
+              return Empty
+       
        st.write(probability)
        return probability
 
