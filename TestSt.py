@@ -77,7 +77,7 @@ def train_model():
        st.write("Accuracy on Test Data:", accuracy)
        st.write("Best AUC:", {roc_auc_score(y, best_model.predict_proba(X)[:,1])}) #for binary classification
        st.write("Model training complete!")       
-
+       st.wrute(best_model)
 
 # Function to make predictions
 def make_prediction(input_data):
@@ -102,7 +102,9 @@ def main():
        st.title("Prediction App")
        
        train_model()
- 
+
+       st.wrute(best_model)
+       
        # Upload a CSV file
        st.write("Upload a CSV file for prediction.")
        uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
