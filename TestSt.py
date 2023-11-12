@@ -21,7 +21,8 @@ features = ['EDUCATION', 'AGE','LIMIT_BAL','PAY_JUNE',
 
 best_model = None
 
-def show_best_model():     
+def show_best_model():
+       global best_model  # Declare best_model as a global variable
        # Print information about the best model
        st.write("Best Model Information:")
        st.write("Parameters:", best_model.get_params())
@@ -35,6 +36,7 @@ def show_best_model():
 
 # Function to train model
 def train_model():
+       global best_model  # Declare best_model as a global variable
        st.write("Training model...")
 
        df_series = pd.read_csv('train_series.csv')
@@ -94,6 +96,7 @@ def train_model():
 
 # Function to make predictions
 def make_prediction(input_data):
+       global best_model  # Declare best_model as a global variable
        st.write("Make prediction...")
 
        show_best_model()
