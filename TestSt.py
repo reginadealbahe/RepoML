@@ -77,13 +77,13 @@ def train_model():
        st.write("Accuracy on Test Data:", accuracy)
        st.write("Best AUC:", {roc_auc_score(y, best_model.predict_proba(X)[:,1])}) #for binary classification
        st.write("Model training complete!")       
-       st.wrute(best_model)
+       st.wrute("Best Model", best_model)
 
 # Function to make predictions
 def make_prediction(input_data):
-       st.write("Make prediction")
-       st.wrute(best_model)
-       
+       st.write("Make prediction...")
+       st.wrute("Best Model", best_model)
+
        X_test = input_data[features]
        st.write(X_test.describe())
        
