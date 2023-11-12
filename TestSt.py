@@ -81,6 +81,7 @@ def train_model():
 
 # Function to make predictions
 def make_prediction(input_data):
+       st.write("Make prediction")
        st.wrute(best_model)
        
        X_test = input_data[features]
