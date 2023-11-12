@@ -21,6 +21,18 @@ features = ['EDUCATION', 'AGE','LIMIT_BAL','PAY_JUNE',
 
 best_model = None
 
+def show_best_model():     
+       # Print information about the best model
+       st.write("Best Model Information:")
+       st.write("Parameters:", best_model.get_params())
+       
+       # Additional information if available
+       if hasattr(best_model, 'feature_importances_'):
+           st.write("\nFeature Importances:", best_model.feature_importances_)
+       
+       if hasattr(best_model, 'coef_'):
+           st.write("\nCoefficients:", best_model.coef_)
+
 # Function to train model
 def train_model():
        st.write("Training model...")
@@ -78,23 +90,14 @@ def train_model():
        st.write("Best AUC:", {roc_auc_score(y, best_model.predict_proba(X)[:,1])}) #for binary classification
        st.write("Model training complete!")   
 
-       # Print information about the best model
-       st.write("Best Model Information:")
-       st.write("Parameters:", best_model.get_params())
-       
-       # Additional information if available
-       if hasattr(best_model, 'feature_importances_'):
-           st.write("\nFeature Importances:", best_model.feature_importances_)
-       
-       if hasattr(best_model, 'coef_'):
-           st.write("\nCoefficients:", best_model.coef_)
-       
+       show_best_model()
 
 # Function to make predictions
 def make_prediction(input_data):
        st.write("Make prediction...")
-       st.wrute("Best Model", best_model)
 
+       show_best_model()
+      
        X_test = input_data[features]
        st.write(X_test.describe())
        
