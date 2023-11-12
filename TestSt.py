@@ -97,10 +97,8 @@ def train_model():
 # Function to make predictions
 def make_prediction(input_data):
        global best_model  # Declare best_model as a global variable
-       st.write("Make prediction...")
-
-       show_best_model()
-      
+       st.write("Making prediction...")
+     
        X_test = input_data[features]
        st.write(X_test.describe())
        
@@ -110,8 +108,7 @@ def make_prediction(input_data):
        except AttributeError as e:
               print(f"Error: {e}")
               return Empty
-       
-       st.write(probability)
+
        return probability
 
 # Streamlit app
@@ -127,10 +124,7 @@ def main():
        if uploaded_file is not None:
               # Read the uploaded CSV file into a Pandas DataFrame
               input_data = pd.read_csv(uploaded_file)
-              
-              # Display the uploaded data
-              #st.write("Uploaded Data:")
-              #st.write(input_data)
+
               
               # Make predictions
               prediction = make_prediction(input_data)
