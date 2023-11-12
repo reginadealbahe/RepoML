@@ -119,8 +119,6 @@ def main():
        st.title("Prediction App")
        
        train_model()
-
-       st.wrute(best_model)
        
        # Upload a CSV file
        st.write("Upload a CSV file for prediction.")
