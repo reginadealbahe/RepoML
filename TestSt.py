@@ -1,4 +1,4 @@
-from sklearn.datasets import fetch_covtype
+#from sklearn.datasets import fetch_covtype
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
