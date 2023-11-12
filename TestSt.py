@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import mutual_info_classif, f_classif
 from sklearn.metrics import roc_auc_score, roc_curve, classification_report
 from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import accuracy_score
        
 import streamlit as st
 import pandas as pd
@@ -44,7 +45,6 @@ def train_model():
        y = df_data_train.DEFAULT_JULY #target variable
        X = df_data_train[features]
 
-
        model = RandomForestClassifier(n_estimators=150) #number of decision trees, large data sets more trees
        
        # Define the hyperparameter grid to search
@@ -67,21 +67,29 @@ def train_model():
        # Get the best hyperparameters and model
        best_params = grid_search.best_params_ #stores a dictionary containing the best hyperparameter values found by the grid search
        best_model = grid_search.best_estimator_ #stores the best machine learning model with the optimal hyperparameters
-       
+
+       # Make predictions using the best model
+       y_pred = best_model.predict(X)
+
+       # Evaluate the model
+       accuracy = accuracy_score(y, y_pred) #accuracy comparing y target with y predicted target
+       st.write("Best Hyperparameters:", best_params)
+       st.write("Accuracy on Test Data:", accuracy)
+       st.write("Best AUC:", {roc_auc_score(y, best_model.predict_proba(X)[:,1])}) #for binary classification
        st.write("Model training complete!")       
 
 
 # Function to make predictions
 def make_prediction(input_data):
-    # Add your data preprocessing steps if needed
-    # Example: input_data = preprocess_data(input_data)
-    X_test = input_data[features]
-    st.write(X_test.describe())
-
-    # Make predictions using the loaded model
-    prediction = best_model.predict_proba(X_test)[:, 1]
-    #prediction = [0.10665705, 0.09051057, 0.89876176]
-    return prediction
+       # Add your data preprocessing steps if needed
+       # Example: input_data = preprocess_data(input_data)
+       X_test = input_data[features]
+       st.write(X_test.describe())
+       
+       # Get probability using the loaded model
+       probability = best_model.predict_proba(X_test)[:, 1]
+       st.write(probability)
+       return probability
 
 # Streamlit app
 def main():
