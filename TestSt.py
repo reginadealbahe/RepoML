@@ -1,4 +1,4 @@
-#from sklearn.datasets import fetch_covtype
+from sklearn.datasets import fetch_covtype
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -12,10 +12,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np # linear algebra
 
+# Declare globals
 features = ['EDUCATION', 'AGE','LIMIT_BAL','PAY_JUNE',
        'PAY_MAY', 'PAY_APRIL', 'PAY_MARCH', 'PAY_FEBRUARY', 'PAY_JANUARY','SEX','MARRIAGE','PAY_AMT_JUNE',
        'PAY_AMT_MAY', 'PAY_AMT_APRIL', 'PAY_AMT_MARCH', 'PAY_AMT_FEBRUARY', 'PAY_AMT_JANUARY','BILL_AMT_APRIL', 'BILL_AMT_FEBRUARY', 'BILL_AMT_JANUARY',
        'BILL_AMT_JUNE', 'BILL_AMT_MARCH', 'BILL_AMT_MAY']
+
+best_model = None
 
 # Function to train model
 def train_model():
@@ -73,6 +76,7 @@ def make_prediction(input_data):
     # Add your data preprocessing steps if needed
     # Example: input_data = preprocess_data(input_data)
     X_test = input_data[features]
+    st.write(X_test.describe())
 
     # Make predictions using the loaded model
     prediction = best_model.predict_proba(X_test)[:, 1]
